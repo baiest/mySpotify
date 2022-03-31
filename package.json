@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "baiest",
   "dependencies": {
-    "eslint-config-standard": "^16.0.3",
+    "babel-plugin-styled-components": "^2.0.6",
     "gatsby": "^4.11.0",
     "gatsby-plugin-gatsby-cloud": "^4.11.0",
     "gatsby-plugin-image": "^2.11.0",
@@ -13,12 +13,14 @@
     "gatsby-plugin-offline": "^5.11.0",
     "gatsby-plugin-react-helmet": "^5.11.0",
     "gatsby-plugin-sharp": "^4.11.0",
+    "gatsby-plugin-styled-components": "^5.11.0",
     "gatsby-source-filesystem": "^4.11.0",
     "gatsby-transformer-sharp": "^4.11.0",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "babel-jest": "^27.5.1",
@@ -41,7 +43,9 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "standard --fix && jest"
+    "watch": "jest --watch",
+    "test": "standard --fix && jest",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -53,8 +57,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm test",
-      "pre-push": "npm test",
-      "...": "..."
+      "pre-push": "npm test"
     }
   }
 }
