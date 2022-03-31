@@ -69,4 +69,4 @@ yarn-error.log
 .yarn-integrity
 
 # Tests
-/__snapshots__/
+**/__snapshots__/
