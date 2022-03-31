@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CardSong = ({ image='', title='Titulo', artist='Artista' }) => {
+export const CardSong = ({ image = '', title = 'Titulo', artist = 'Artista' }) => {
   return (
     <section>
       <img src={image} alt={`image-${artist}-${title}`} />

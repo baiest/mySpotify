@@ -4,7 +4,7 @@ import rerenderer from 'react-test-renderer'
 import { CardSong } from './index'
 describe('CardSong', () => {
   const tree = rerenderer
-    .create( < CardSong /> )
+    .create(<CardSong />)
     .toJSON()
   it('renders correctly', () => {
     expect(tree).toMatchSnapshot()
