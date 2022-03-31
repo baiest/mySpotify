@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "mySpotify",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Aproject to practice with Gatsby and React",
+  "version": "1.0.0",
+  "author": "baiest",
   "dependencies": {
     "gatsby": "^4.11.0",
     "gatsby-plugin-gatsby-cloud": "^4.11.0",
@@ -15,12 +15,19 @@
     "gatsby-source-filesystem": "^4.11.0",
     "gatsby-transformer-sharp": "^4.11.0",
     "prop-types": "^15.8.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "^2.6.1"
+    "babel-jest": "^27.5.1",
+    "babel-preset-gatsby": "^2.11.0",
+    "husky": "^7.0.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.1",
+    "react-test-renderer": "^18.0.0",
+    "standard": "^16.0.4"
   },
   "keywords": [
     "gatsby"
@@ -33,7 +40,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "standard --fix && jest"
   },
   "repository": {
     "type": "git",
@@ -41,5 +48,12 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test",
+      "...": "..."
+    }
   }
 }
