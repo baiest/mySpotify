@@ -1,41 +1,49 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Head, LinkStyle, Title, MenuList, MenuItem } from './style'
-import { StaticImage } from 'gatsby-plugin-image'
-import { Link } from 'gatsby'
-
+import React from "react"
+import PropTypes from "prop-types"
+import { Head, LinkStyle, Title, MenuList, MenuItem, Container } from "./style"
+import { StaticImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+import { MdFavorite, MdLogout } from "react-icons/md"
 const ToHome = ({ title }) => (
-  <LinkStyle to='/'>
+  <LinkStyle to="/">
     <StaticImage
-      src='../../images/icon.png'
+      src="../../images/icon.png"
       width={30}
       style={{
-        borderRadius: '50%'
+        borderRadius: "50%",
       }}
-      layout='fixed'
-      alt='Logo de mySpotify'
+      layout="fixed"
+      alt="Logo de mySpotify"
     />
-    <Title>
-      {title}
-    </Title>
+    <Title>{title}</Title>
   </LinkStyle>
 )
 
 const Menu = () => (
   <nav>
     <MenuList>
-      <MenuItem><Link to='/favorites'>Mis favoritos</Link></MenuItem>
-      <MenuItem><Link to='/logout'>Salir</Link></MenuItem>
+      <MenuItem>
+        <Link to="/favorites">
+          <MdFavorite size={25} /> favoritos
+        </Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/logout">
+          <MdLogout size={25} /> Salir
+        </Link>
+      </MenuItem>
     </MenuList>
   </nav>
 )
 export const Header = ({ siteTitle }) => (
   <Head>
-    <ToHome title={siteTitle} />
-    <Menu />
+    <Container>
+      <ToHome title={siteTitle} />
+      <Menu />
+    </Container>
   </Head>
 )
 
 Header.propTypes = {
-  siteTitle: PropTypes.string
+  siteTitle: PropTypes.string,
 }

@@ -15,13 +15,17 @@
     "gatsby-plugin-react-helmet": "^5.11.0",
     "gatsby-plugin-sharp": "^4.11.1",
     "gatsby-plugin-styled-components": "^5.11.0",
+    "gatsby-plugin-typography": "^4.11.0",
     "gatsby-source-filesystem": "^4.11.1",
     "gatsby-transformer-sharp": "^4.11.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "styled-components": "^5.3.5"
+    "react-icons": "^4.3.1",
+    "react-typography": "^0.16.20",
+    "styled-components": "^5.3.5",
+    "typography": "^0.16.21"
   },
   "devDependencies": {
     "babel-jest": "^27.5.1",
@@ -45,7 +49,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "watch": "jest --watch",
-    "test": "standard --fix && jest",
+    "test": "jest",
     "prepare": "husky install"
   },
   "repository": {

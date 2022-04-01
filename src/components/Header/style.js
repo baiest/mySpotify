@@ -1,11 +1,16 @@
-import styled from 'styled-components'
-import { color } from '../../styles/colors'
-import { Link } from 'gatsby'
+import styled from "styled-components"
+import { color } from "../../styles/colors"
+import { Link } from "gatsby"
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 50px;
+`
 
 export const Head = styled.header`
-  display: flex;
-  height: 50px;
-  justify-content: space-evenly;
   background: ${color.card};
   color: #fff;
 `
@@ -15,7 +20,7 @@ export const LinkStyle = styled(Link)`
   align-items: center;
   margin: 0 4px;
   text-decoration: none;
-  color: ${color.fontColor}
+  color: ${color.fontColor};
 `
 
 export const Title = styled.h1`
@@ -34,13 +39,19 @@ export const MenuList = styled.ul`
 `
 
 export const MenuItem = styled.li`
-  display: grid;
-  place-content: center;
   padding: 5px;
   margin: 0;
+  padding: 0;
   margin-right: 8px;
-  &>a{
-    color: #FFF;
+  font-size: 0.7rem;
+  & > a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 4px;
+    color: #fff;
+    line-height: 0.7rem;
     text-decoration: none;
+    height: 100%;
   }
 `

@@ -1,13 +1,17 @@
-import React from 'react'
-import { ListSongs } from '../components/ListSongs'
-import Seo from '../components/seo'
+import React from "react"
+import styled from "styled-components"
+import { ListSongs } from "../components/ListSongs"
+import Seo from "../components/seo"
+
+const Title = styled.h2`
+  margin: 12px 0;
+  font-size: 1.8rem;
+`
 
 const IndexPage = () => (
   <>
-    <Seo title='Home' />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
+    <Seo title="Home" />
+    <Title>Mis Favoritos</Title>
     <ListSongs />
   </>
 )
