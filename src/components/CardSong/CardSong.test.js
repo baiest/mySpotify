@@ -9,7 +9,7 @@ describe("CardSong", () => {
   })
   it("Elements CardSong", () => {
     expect(tree).toMatchSnapshot({
-      children: [{ type: "img" }, { type: "div" }, { type: "span" }],
+      children: [{ type: "img" }, { type: "div" }, { type: "svg" }],
     })
   })
 })
