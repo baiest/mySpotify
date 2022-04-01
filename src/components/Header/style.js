@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { color } from '../../styles/colors'
-import { Link  } from 'gatsby'
+import { Link } from 'gatsby'
 
 export const Head = styled.header`
   display: flex;
@@ -32,7 +32,7 @@ export const MenuList = styled.ul`
   padding: 0;
   list-style: none;
 `
-  
+
 export const MenuItem = styled.li`
   display: grid;
   place-content: center;

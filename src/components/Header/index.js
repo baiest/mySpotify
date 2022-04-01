@@ -2,21 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Head, LinkStyle, Title, MenuList, MenuItem } from './style'
 import { StaticImage } from 'gatsby-plugin-image'
-import { Link  } from 'gatsby'
+import { Link } from 'gatsby'
 
 const ToHome = ({ title }) => (
   <LinkStyle to='/'>
-      <StaticImage 
-        src='../../images/icon.png'
-        width={30}
-        style={{
-          borderRadius: '50%'
-        }}
-        layout='fixed'
-        alt='Logo de mySpotify'/>
-        <Title>
-          {title}
-        </Title>
+    <StaticImage
+      src='../../images/icon.png'
+      width={30}
+      style={{
+        borderRadius: '50%'
+      }}
+      layout='fixed'
+      alt='Logo de mySpotify'
+    />
+    <Title>
+      {title}
+    </Title>
   </LinkStyle>
 )
 
