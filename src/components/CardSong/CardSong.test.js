@@ -10,11 +10,10 @@ describe('CardSong', () => {
     expect(tree).toMatchSnapshot()
   })
   it('Elements CardSong', () => {
-    expect(tree).toMatchSnapshot({
+        expect(tree).toMatchSnapshot({
       children: [
         { type: 'img' },
-        { type: 'h3' },
-        { type: 'small' },
+        { type: 'div' },
         { type: 'span' }
       ]
     })

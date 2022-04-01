@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color } from '@colors'
+import { color } from '../../styles/colors'
 export const Card = styled.section`
   display: flex;
   align-items: center;

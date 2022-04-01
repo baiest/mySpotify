@@ -8,9 +8,9 @@ export const Grid = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-` 
+`
 
 export const Item = styled.li`
   margin: 0;
   padding: 0;
-` 
+`
