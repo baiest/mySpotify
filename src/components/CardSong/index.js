@@ -1,12 +1,14 @@
 import React from 'react'
-
+import { Card, Info } from './styles'
 export const CardSong = ({ image = '', title = 'Titulo', artist = 'Artista' }) => {
   return (
-    <section>
+    <Card>
       <img src={image} alt={`image-${artist}-${title}`} />
-      <h3>{title}</h3>
-      <small>{artist}</small>
-      <span>Favorite</span>
-    </section>
+      <Info>
+        <h3>{title}</h3>
+        <small>{artist}</small>
+      </Info>
+      <span>❤</span>
+    </Card>
   )
 }

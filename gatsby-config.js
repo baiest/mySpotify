@@ -30,11 +30,22 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#113065`,
         display: 'minimal-ui',
-        icon: './src/images/icon.png' // This path is relative to the root of the site.
+        icon: './src/images/cuenta.png' // This path is relative to the root of the site.
       }
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@colors": "src/styles/colors",
+        },
+        extensions: [
+          "js",
+        ],
+      }
+    }
   ]
 }

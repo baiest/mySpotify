@@ -1,9 +1,9 @@
-/* eslint-disable no-undef */
+/*eslint-disable*/
 import React from 'react'
-import rerenderer from 'react-test-renderer'
-import { CardSong } from './index'
+import renderer from 'react-test-renderer'
+import { CardSong } from '.'
 describe('CardSong', () => {
-  const tree = rerenderer
+  const tree = renderer
     .create(<CardSong />)
     .toJSON()
   it('renders correctly', () => {

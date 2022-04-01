@@ -10,7 +10,9 @@ module.exports = {
     '^gatsby-plugin-utils/(.*)$': [
       'gatsby-plugin-utils/dist/$1',
       'gatsby-plugin-utils/$1'
-    ] // Workaround for https://github.com/facebook/jest/issues/9771
+    ], // Workaround for https://github.com/facebook/jest/issues/9771
+    '^rootDir/(.*)$': '<rootDir>/src/',
+    '^@colors(.*)$': '<rootDir>/src/styles/colors$1'
   },
   testPathIgnorePatterns: ['node_modules', '\\.cache', '<rootDir>.*/public'],
   transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
@@ -18,5 +20,5 @@ module.exports = {
     __PATH_PREFIX__: ''
   },
   testURL: 'http://localhost'
-  // setupFiles: [`<rootDir>/loadershim.js`],
+    // setupFiles: [`<rootDir>/loadershim.js`],
 }
