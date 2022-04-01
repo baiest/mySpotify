@@ -30,7 +30,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#113065`,
         display: 'minimal-ui',
-        icon: './src/images/cuenta.png' // This path is relative to the root of the site.
+        icon: './src/images/icon.png' // This path is relative to the root of the site.
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
