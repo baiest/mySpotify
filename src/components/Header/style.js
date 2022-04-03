@@ -7,11 +7,11 @@ export const Container = styled.div`
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  height: 50px;
+  height: 70px;
 `
 
 export const Head = styled.header`
-  background: ${color.card};
+  background: ${color.primaryColor};
   color: #fff;
 `
 
@@ -31,6 +31,7 @@ export const Title = styled.h1`
 
 export const MenuList = styled.ul`
   display: flex;
+  align-items: center;
   height: 100%;
   font-size: 1rem;
   margin: 0;

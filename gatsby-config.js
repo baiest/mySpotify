@@ -1,4 +1,8 @@
 /*eslint-disable*/
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: "MySpotify",
@@ -49,6 +53,12 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-express",
+      options: {
+        output: "config/gatsby-express.json",
       },
     },
   ],

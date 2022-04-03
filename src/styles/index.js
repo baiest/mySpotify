@@ -10,5 +10,6 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     background: ${color.backgroud};
+    scroll-behavior: smooth;;
   }
 `

@@ -4,6 +4,9 @@ import { Head, LinkStyle, Title, MenuList, MenuItem, Container } from "./style"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { MdFavorite, MdLogout } from "react-icons/md"
+
+const ICON_SIZE = 35
+
 const ToHome = ({ title }) => (
   <LinkStyle to="/">
     <StaticImage
@@ -23,13 +26,13 @@ const Menu = () => (
   <nav>
     <MenuList>
       <MenuItem>
-        <Link to="/favorites">
-          <MdFavorite size={25} /> favoritos
+        <Link to="/favoritos">
+          <MdFavorite size={ICON_SIZE} /> favoritos
         </Link>
       </MenuItem>
       <MenuItem>
-        <Link to="/logout">
-          <MdLogout size={25} /> Salir
+        <Link to="/login">
+          <MdLogout size={ICON_SIZE} /> Salir
         </Link>
       </MenuItem>
     </MenuList>
