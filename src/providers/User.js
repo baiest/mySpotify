@@ -1,28 +1,44 @@
 import { axiosInstance } from "./api"
 import { Track } from "./Track"
 import axios from "axios"
+
 export class User {
+  constructor({ display_name, images }) {
+    this.name = display_name
+    this.image = images[0].url
+  }
   static isLogged() {
     const isBrowser = typeof window !== "undefined"
     return isBrowser && window.localStorage.getItem("token")
   }
   static getAuth() {
+    /**@returns URL to login in Spotify */
     const data = new URLSearchParams()
     data.append("response_type", "code")
     data.append("client_id", process.env.CLIENT_ID)
-    data.append("scope", "user-library-read")
+    data.append("scope", "user-read-private user-read-email user-library-read")
     data.append("redirect_uri", `${process.env.REDIRECT_URI}/login`)
     return "https://accounts.spotify.com/authorize?" + data
   }
   static async getToken(code) {
     try {
-      console.log(code)
       const response = await axios.post("http://192.168.1.54:8001/login", {
         code,
       })
-      console.log(response)
       window.localStorage.setItem("token", response.data.access_token)
       return response.data.access_token
+    } catch (error) {
+      throw error
+    }
+  }
+  static async getUser() {
+    try {
+      const response = await axiosInstance.get("/me", {
+        headers: {
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+      })
+      return new User({ ...response.data })
     } catch (error) {
       throw error
     }
@@ -47,6 +63,7 @@ export class User {
           new Track({
             ...track.album,
             id: track.id,
+            name: track.name,
             totalTracks: response.data.total,
           })
       )

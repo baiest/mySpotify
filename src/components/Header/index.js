@@ -1,11 +1,15 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Head, LinkStyle, Title, MenuList, MenuItem, Container } from "./style"
 import { StaticImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
-import { MdFavorite, MdLogout } from "react-icons/md"
-
-const ICON_SIZE = 35
+import { User } from "../../providers/User"
+import {
+  Head,
+  LinkStyle,
+  Title,
+  MenuNavHeader,
+  Container,
+  UserSection,
+} from "./style"
 
 const ToHome = ({ title }) => (
   <LinkStyle to="/">
@@ -22,30 +26,32 @@ const ToHome = ({ title }) => (
   </LinkStyle>
 )
 
-const Menu = () => (
-  <nav>
-    <MenuList>
-      <MenuItem>
-        <Link to="/favoritos">
-          <MdFavorite size={ICON_SIZE} /> favoritos
-        </Link>
-      </MenuItem>
-      <MenuItem>
-        <Link to="/login">
-          <MdLogout size={ICON_SIZE} /> Salir
-        </Link>
-      </MenuItem>
-    </MenuList>
-  </nav>
+const UserContainer = ({ name, image }) => (
+  <UserSection>
+    <h4>{name}</h4>
+    <img src={image} alt="usuario profile" />
+  </UserSection>
 )
-export const Header = ({ siteTitle }) => (
-  <Head>
-    <Container>
-      <ToHome title={siteTitle} />
-      <Menu />
-    </Container>
-  </Head>
-)
+export const Header = ({ siteTitle }) => {
+  const [isLogged, setIsLogged] = React.useState(false)
+  const [state, setState] = React.useState({
+    name: "",
+    image: "",
+  })
+  React.useEffect(() => {
+    User.getUser().then(setState).catch(console.log)
+  }, [])
+  return (
+    <Head>
+      {isLogged && "Hola"}
+      <Container>
+        <ToHome title={siteTitle} />
+        <MenuNavHeader />
+        {state.name && <UserContainer {...state} />}
+      </Container>
+    </Head>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

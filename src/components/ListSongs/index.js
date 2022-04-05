@@ -32,9 +32,8 @@ const songsReducer = (state, action) => {
 
 export const ListSongs = ({ getData, handleIntersection }) => {
   const [state, dispatch] = React.useReducer(songsReducer, initialState)
-  const handleCurrentSong = idSong => {
+  const handleCurrentSong = idSong =>
     dispatch({ type: "CURRENT_SONG", payload: idSong })
-  }
 
   const handleCloseTrack = () => dispatch({ type: "CLOSE_PLAYER" })
   React.useEffect(() => {

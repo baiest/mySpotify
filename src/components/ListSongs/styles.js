@@ -15,4 +15,5 @@ export const Item = styled.li`
   margin: 0;
   padding: 0;
   height: auto;
+  &:active, &:focus border: 5px solid orange
 `

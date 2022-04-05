@@ -19,7 +19,7 @@ export const Card = styled.article`
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 2px 2px 4px ${color.primaryColor}, -2px -2px 4px ${color.shadow};
+  // box-shadow: 2px 2px 4px ${color.primaryColor}, -2px -2px 4px ${color.shadow};
   animation: ${Opaity} 0.3s ease-in;
 `
 export const ImgContainer = styled.figure`
@@ -51,6 +51,16 @@ export const Info = styled.div`
     font-weight: 300;
     color: ${color.fontColor};
   }
+`
+
+export const Button = styled.button`
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  white-space: normal;
+  cursor: pointer;
 `
 
 const LikeAnimation = like => keyframes`

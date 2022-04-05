@@ -21,7 +21,7 @@ export const Spotify = styled.div`
   background-opacity: 0.4;
   display: grid;
   place-content: center;
-  bottom: 20px;
+  bottom: 80px;
   margin: 0 auto;
   left: 0;
   right: 0;
