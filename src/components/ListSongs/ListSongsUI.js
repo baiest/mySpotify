@@ -1,4 +1,4 @@
-import React, { useCallback } from "react"
+import React from "react"
 
 import { CardSong } from "../CardSong"
 import { Grid, Item } from "./styles"
@@ -31,12 +31,12 @@ export const ListSongsUI = ({
       cardRef.current && observer.disconnect(cardRef.current)
       cardRef.current = null
     }
-  }, [loading])
+  }, [loading, handleIntersection])
   return (
     <Grid>
       {error && <p>{error}</p>}
       {data.length === 0 && <p>No hay conciones</p>}
-      {data.map((song, key) => (
+      {data.map(song => (
         <Item key={song.id} ref={cardRef}>
           <CardSong
             id={song.id}

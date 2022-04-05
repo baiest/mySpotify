@@ -1,14 +1,5 @@
-const express = require("express")
-const cors = require("cors")
 const SpotifyWebApi = require("spotify-web-api-node")
-require("dotenv").config({
-  path: `.env.development`,
-})
-const app = express()
-
-app.use(cors())
-app.use(express.json())
-app.post("/login", (req, res) => {
+export default function handler(req, res) {
   const code = req.body.code
   const spotifyApi = new SpotifyWebApi({
     redirectUri: `${process.env.REDIRECT_URI}/login`,
@@ -28,6 +19,4 @@ app.post("/login", (req, res) => {
       console.log(error)
       res.sendStatus(401)
     })
-})
-
-app.listen(8001, "0.0.0.0", () => console.log(`Server Spotify running`))
+}

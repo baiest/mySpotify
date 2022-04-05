@@ -7,6 +7,7 @@ export const Player = ({ idTrack, handleCloseTrack }) => {
     <Spotify>
       <p>Cargando...</p>
       <iframe
+        title={idTrack}
         src={`https://open.spotify.com/embed/track/${idTrack}?utm_source=generator`}
         width="100%"
         height="80"

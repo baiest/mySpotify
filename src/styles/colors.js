@@ -1,9 +1,9 @@
-const primaryColor = "#113065"
-const shadow = "#0a1b38"
+const primaryColor = "#111219"
+const shadow = "#121717"
 export const color = {
   primaryColor,
   shadow,
-  backgroud: "#0c254a",
+  backgroud: "#171F5A",
   fontColor: "#AC9FC6",
-  card: `linear-gradient(180deg, ${primaryColor} 50%, ${shadow} 100%)`,
+  card: `linear-gradient(0, ${primaryColor} 20%, ${shadow} 60%)`,
 }

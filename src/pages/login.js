@@ -17,7 +17,7 @@ const Login = ({ location }) => {
           setError(e.message)
           setLogged(false)
         })
-  }, [])
+  }, [code])
 
   const handleLog = () => {
     if (!logged) {

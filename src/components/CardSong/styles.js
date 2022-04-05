@@ -19,8 +19,15 @@ export const Card = styled.article`
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  // box-shadow: 2px 2px 4px ${color.primaryColor}, -2px -2px 4px ${color.shadow};
   animation: ${Opaity} 0.3s ease-in;
+
+  @media screen and (min-width: 420px) {
+    display: inline-block;
+    height: 220px;
+    padding: 10px;
+    margin: 0;
+    box-shadow: 0 4px 8px ${color.shadow};
+  }
 `
 export const ImgContainer = styled.figure`
   position: absolute;
@@ -34,6 +41,14 @@ export const ImgContainer = styled.figure`
     object-fit: cover;
     width: 100%;
     height: 100%;
+  }
+
+  @media screen and (min-width: 420px) {
+    width: 100%;
+    overflow: hidden;
+    & > img {
+      height: auto;
+    }
   }
 `
 
@@ -51,9 +66,28 @@ export const Info = styled.div`
     font-weight: 300;
     color: ${color.fontColor};
   }
+  @media screen and (min-width: 420px) { 
+    position: absolute;
+    padding: 10px;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    bottom: 0;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(0, ${color.primaryColor} 70%, transparent 100%);
+    &>h3{
+      width: 80%;
+    }
+  }
 `
 
 export const Button = styled.button`
+  position: absolute;
+  botom: 0;
+  right: 10px;
   line-height: 0;
   padding: 0;
   margin: 0;
@@ -61,6 +95,9 @@ export const Button = styled.button`
   border: none;
   white-space: normal;
   cursor: pointer;
+  @media screen and (min-width: 420px) {
+    bottom: 10px;
+  }
 `
 
 const LikeAnimation = like => keyframes`

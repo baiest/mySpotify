@@ -9,6 +9,11 @@ export const Grid = styled.ul`
   padding: 0;
   list-style: none;
   transition: all 0.3s;
+
+  @media screen and (min-width: 420px) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+    gap: 20px;
+  }
 `
 
 export const Item = styled.li`

@@ -15,14 +15,14 @@ export const CardSong = ({
       <ImgContainer onClick={handleOnClick}>
         <img src={image} alt={`${artist}-${title}`} />
       </ImgContainer>
-      <Info onClick={() => selected(id)}>
+      <Info onClick={handleOnClick}>
         <h3>{title}</h3>
         <small>{artist}</small>
+        <Button onClick={handleFavorite}>
+          {isFavorite && <Liked size={30} />}
+          {!isFavorite && <UnLiked size={30} />}
+        </Button>
       </Info>
-      <Button onClick={handleFavorite}>
-        {isFavorite && <Liked size={30} />}
-        {!isFavorite && <UnLiked size={30} />}
-      </Button>
     </Card>
   )
 }

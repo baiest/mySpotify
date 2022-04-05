@@ -32,5 +32,6 @@ export const MenuItem = styled.li`
     line-height: 0.7rem;
     text-decoration: none;
     height: 100%;
+    font-family: "Montserrat", sans-serif;
   }
 `

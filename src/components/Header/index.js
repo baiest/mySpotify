@@ -33,7 +33,6 @@ const UserContainer = ({ name, image }) => (
   </UserSection>
 )
 export const Header = ({ siteTitle }) => {
-  const [isLogged, setIsLogged] = React.useState(false)
   const [state, setState] = React.useState({
     name: "",
     image: "",
@@ -43,11 +42,12 @@ export const Header = ({ siteTitle }) => {
   }, [])
   return (
     <Head>
-      {isLogged && "Hola"}
       <Container>
         <ToHome title={siteTitle} />
-        <MenuNavHeader />
-        {state.name && <UserContainer {...state} />}
+        <div style={{ display: "flex" }}>
+          <MenuNavHeader />
+          {state.name && <UserContainer {...state} />}
+        </div>
       </Container>
     </Head>
   )

@@ -1,7 +1,6 @@
 import { axiosInstance } from "./api"
 import { Track } from "./Track"
 import axios from "axios"
-
 export class User {
   constructor({ display_name, images }) {
     this.name = display_name
@@ -16,13 +15,16 @@ export class User {
     const data = new URLSearchParams()
     data.append("response_type", "code")
     data.append("client_id", process.env.CLIENT_ID)
-    data.append("scope", "user-read-private user-read-email user-library-read")
+    data.append(
+      "scope",
+      "user-read-private user-read-email user-library-read streaming"
+    )
     data.append("redirect_uri", `${process.env.REDIRECT_URI}/login`)
     return "https://accounts.spotify.com/authorize?" + data
   }
   static async getToken(code) {
     try {
-      const response = await axios.post("http://192.168.1.54:8001/login", {
+      const response = await axios.post("/api/spotify-login", {
         code,
       })
       window.localStorage.setItem("token", response.data.access_token)

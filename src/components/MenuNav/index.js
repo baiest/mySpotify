@@ -12,7 +12,7 @@ export const MenuNav = ({ visible = true, className }) => {
       <MenuList>
         <MenuItem>
           <Link to="/favoritos">
-            <MdFavorite size={ICON_SIZE} /> favoritos
+            <MdFavorite size={ICON_SIZE} /> Favoritos
           </Link>
         </MenuItem>
         <MenuItem>
