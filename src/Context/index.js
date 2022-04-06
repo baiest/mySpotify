@@ -1,12 +1,12 @@
-import React from "react";
+import React from "react"
 
 export const AppContext = React.createContext()
 
 export const ContextProvider = ({ children, reducer, initialState }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
-  return(
+  return (
     <AppContext.Provider value={[state, dispatch]}>
       {children}
-    </ AppContext.Provider>
+    </AppContext.Provider>
   )
 }

@@ -7,7 +7,7 @@ export const ListSongsUI = ({
   loading,
   error,
   data,
-  handleIntersection,
+  handleIntersection = () => {},
 }) => {
   const cardRef = React.useRef(null)
   React.useEffect(() => {
@@ -38,7 +38,7 @@ export const ListSongsUI = ({
       {data.map(song => (
         <Item key={song.id} ref={cardRef}>
           <CardSong
-            id={song.id}
+            {...song}
             title={song.name}
             artist={song.artists && song.artists[0].name}
             image={song.images && song.images[0].url}

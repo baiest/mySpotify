@@ -39,10 +39,5 @@ export const ListSongs = ({ getData, handleIntersection }) => {
       .catch(error => dispatch({ type: "ERROR", payload: error.message }))
   }, [getData])
 
-  return (
-      <ListSongsUI
-        {...state}
-        handleIntersection={handleIntersection}
-      />
-  )
+  return <ListSongsUI {...state} handleIntersection={handleIntersection} />
 }

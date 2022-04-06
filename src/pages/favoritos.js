@@ -21,14 +21,16 @@ const Favoritos = () => {
   )
   const handleIntersection = () =>
     setPages({ ...pages, page: pages.songs + pages.page })
-  
-  const [state,]= React.useContext(AppContext)
+
+  const [state] = React.useContext(AppContext)
   const { user } = state
   return (
     <>
       <Seo title="Favoritos" />
       <Title>Mis Favoritos</Title>
-      {user && <ListSongs getData={getData} handleIntersection={handleIntersection} />}
+      {user && (
+        <ListSongs getData={getData} handleIntersection={handleIntersection} />
+      )}
       {!user && <p>No hay un usuario logueado</p>}
     </>
   )

@@ -37,10 +37,16 @@ const UserContainer = ({ name, image }) => (
 export const Header = ({ siteTitle }) => {
   const [state, dispatch] = React.useContext(AppContext)
   const { user } = state
-  
-  React.useEffect(() => !user && User.isTokenInStorage() && User.getUser()
-    .then(user => dispatch(setUser(user)))
-    .catch(console.error), [])
+
+  React.useEffect(
+    () =>
+      !user &&
+      User.isTokenInStorage() &&
+      User.getUser()
+        .then(user => dispatch(setUser(user)))
+        .catch(console.error),
+    [user, dispatch]
+  )
   return (
     <Head>
       <Container>

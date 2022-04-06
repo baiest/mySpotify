@@ -6,8 +6,8 @@ import { Spotify } from "./style"
 export const Player = () => {
   const [state, dispatch] = React.useContext(AppContext)
   const { currentTrack } = state
-  
-  const handleCloseTrack = () => dispatch(closePlayer()) 
+
+  const handleCloseTrack = () => dispatch(closePlayer())
   if (!currentTrack) return null
   return (
     <Spotify>

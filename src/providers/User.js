@@ -7,17 +7,17 @@ export class User {
     this.image = images[0].url
   }
   static isTokenInStorage() {
-      const isBrowser = typeof window !== "undefined"
-      return isBrowser && window.localStorage.getItem("token")
-    }
-    /**@returns URL to login in Spotify */
+    const isBrowser = typeof window !== "undefined"
+    return isBrowser && window.localStorage.getItem("token")
+  }
+  /**@returns URL to login in Spotify */
   static getAuth() {
     const data = new URLSearchParams()
     data.append("response_type", "code")
     data.append("client_id", process.env.CLIENT_ID)
     data.append(
       "scope",
-      "user-read-private user-read-email user-library-read streaming"
+      "user-read-private user-read-email user-library-read user-library-modify"
     )
     data.append("redirect_uri", `${process.env.REDIRECT_URI}/login`)
     return "https://accounts.spotify.com/authorize?" + data
@@ -40,7 +40,7 @@ export class User {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
       })
-      return new User({...response.data })
+      return new User({ ...response.data })
     } catch (error) {
       throw error
     }
@@ -51,21 +51,24 @@ export class User {
   static async getFavoritesSongs(numTracks, numPages) {
     try {
       const response = await axiosInstance.get(
-        `me/tracks?market=ES&limit=${numTracks}&offset=${numPages}`, {
+        `me/tracks?market=ES&limit=${numTracks}&offset=${numPages}`,
+        {
           headers: {
             Authorization: `Bearer ${window.localStorage.getItem("token")}`,
           },
         }
       )
       const data = response.data.items
+      console.log(data)
       return data.map(
-        ({ track }) =>
-        new Track({
-          ...track.album,
-          id: track.id,
-          name: track.name,
-          totalTracks: response.data.total,
-        })
+        ({ track, added_at }) =>
+          new Track({
+            ...track.album,
+            id: track.id,
+            name: track.name,
+            totalTracks: response.data.total,
+            added_at,
+          })
       )
     } catch (error) {
       throw new Error(error)
