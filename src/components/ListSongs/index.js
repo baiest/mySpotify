@@ -1,12 +1,10 @@
 import React from "react"
-import { Player } from "../Player"
 import { ListSongsUI } from "./ListSongsUI"
 
 const initialState = {
   data: [],
   loading: false,
   error: "",
-  currentSong: null,
   total: -1,
 }
 
@@ -20,8 +18,6 @@ const songsReducer = (state, action) => {
     SET_DATA: { ...state, loading: false, data: newData },
     SET_TOTAL: { ...state, loading: false, total: action.payload },
     ERROR: { ...state, loading: false, error: action.payload },
-    CURRENT_SONG: { ...state, currentSong: action.payload },
-    CLOSE_PLAYER: { ...state, currentSong: null },
   }
   try {
     return reducer[action.type]
@@ -32,10 +28,6 @@ const songsReducer = (state, action) => {
 
 export const ListSongs = ({ getData, handleIntersection }) => {
   const [state, dispatch] = React.useReducer(songsReducer, initialState)
-  const handleCurrentSong = idSong =>
-    dispatch({ type: "CURRENT_SONG", payload: idSong })
-
-  const handleCloseTrack = () => dispatch({ type: "CLOSE_PLAYER" })
   React.useEffect(() => {
     dispatch({ type: "LOADING" })
     getData()
@@ -48,13 +40,9 @@ export const ListSongs = ({ getData, handleIntersection }) => {
   }, [getData])
 
   return (
-    <>
       <ListSongsUI
         {...state}
-        handleCurrentSong={handleCurrentSong}
         handleIntersection={handleIntersection}
       />
-      <Player idTrack={state.currentSong} handleCloseTrack={handleCloseTrack} />
-    </>
   )
 }

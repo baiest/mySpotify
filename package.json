@@ -52,7 +52,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "watch": "jest --watch",
-    "test": "jest",
+    "test": "jest -u",
     "prepare": "husky install"
   },
   "repository": {
@@ -64,7 +64,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
+      "pre-commit": "npm run format && git add -A",
       "pre-push": "npm test"
     }
   }

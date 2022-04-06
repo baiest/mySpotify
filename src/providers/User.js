@@ -6,12 +6,12 @@ export class User {
     this.name = display_name
     this.image = images[0].url
   }
-  static isLogged() {
-    const isBrowser = typeof window !== "undefined"
-    return isBrowser && window.localStorage.getItem("token")
-  }
-  static getAuth() {
+  static isTokenInStorage() {
+      const isBrowser = typeof window !== "undefined"
+      return isBrowser && window.localStorage.getItem("token")
+    }
     /**@returns URL to login in Spotify */
+  static getAuth() {
     const data = new URLSearchParams()
     data.append("response_type", "code")
     data.append("client_id", process.env.CLIENT_ID)
@@ -22,7 +22,7 @@ export class User {
     data.append("redirect_uri", `${process.env.REDIRECT_URI}/login`)
     return "https://accounts.spotify.com/authorize?" + data
   }
-  static async getToken(code) {
+  static async setToken(code) {
     try {
       const response = await axios.post("/api/spotify-login", {
         code,
@@ -40,7 +40,7 @@ export class User {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
       })
-      return new User({ ...response.data })
+      return new User({...response.data })
     } catch (error) {
       throw error
     }
@@ -49,11 +49,9 @@ export class User {
     window.localStorage.removeItem("token")
   }
   static async getFavoritesSongs(numTracks, numPages) {
-    console.log(window.localStorage.getItem("token"))
     try {
       const response = await axiosInstance.get(
-        `me/tracks?market=ES&limit=${numTracks}&offset=${numPages}`,
-        {
+        `me/tracks?market=ES&limit=${numTracks}&offset=${numPages}`, {
           headers: {
             Authorization: `Bearer ${window.localStorage.getItem("token")}`,
           },
@@ -62,12 +60,12 @@ export class User {
       const data = response.data.items
       return data.map(
         ({ track }) =>
-          new Track({
-            ...track.album,
-            id: track.id,
-            name: track.name,
-            totalTracks: response.data.total,
-          })
+        new Track({
+          ...track.album,
+          id: track.id,
+          name: track.name,
+          totalTracks: response.data.total,
+        })
       )
     } catch (error) {
       throw new Error(error)

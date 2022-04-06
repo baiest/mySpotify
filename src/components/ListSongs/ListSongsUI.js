@@ -7,7 +7,6 @@ export const ListSongsUI = ({
   loading,
   error,
   data,
-  handleCurrentSong,
   handleIntersection,
 }) => {
   const cardRef = React.useRef(null)
@@ -35,12 +34,11 @@ export const ListSongsUI = ({
   return (
     <Grid>
       {error && <p>{error}</p>}
-      {data.length === 0 && <p>No hay conciones</p>}
+      {data.length === 0 && !loading && <p>No hay conciones</p>}
       {data.map(song => (
         <Item key={song.id} ref={cardRef}>
           <CardSong
             id={song.id}
-            selected={handleCurrentSong}
             title={song.name}
             artist={song.artists && song.artists[0].name}
             image={song.images && song.images[0].url}

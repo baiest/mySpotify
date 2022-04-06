@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { ListSongs } from "../components/ListSongs"
 import Seo from "../components/seo"
+import { AppContext } from "../Context"
 import { User } from "../providers/User"
 
 const Title = styled.h2`
@@ -20,12 +21,15 @@ const Favoritos = () => {
   )
   const handleIntersection = () =>
     setPages({ ...pages, page: pages.songs + pages.page })
-
+  
+  const [state,]= React.useContext(AppContext)
+  const { user } = state
   return (
     <>
-      <Seo title="Home" />
+      <Seo title="Favoritos" />
       <Title>Mis Favoritos</Title>
-      <ListSongs getData={getData} handleIntersection={handleIntersection} />
+      {user && <ListSongs getData={getData} handleIntersection={handleIntersection} />}
+      {!user && <p>No hay un usuario logueado</p>}
     </>
   )
 }

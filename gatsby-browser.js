@@ -8,10 +8,11 @@
 const React = require("react")
 const { Layout } = require("./src/components/Layout")
 const { GlobalStyles } = require("./src/styles")
-
+const { ContextProvider } = require('./src/Context')
+const { initialState, contextReducer } = require("./src/Context/ContextReducer")
 exports.wrapRootElement = ({ element }) => (
-  <>
+  <ContextProvider initialState={initialState} reducer={contextReducer}>
     <GlobalStyles />
     <Layout>{element}</Layout>
-  </>
+  </ContextProvider>
 )

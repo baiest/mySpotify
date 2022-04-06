@@ -12,8 +12,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Header } from "../Header"
 import "./layout.css"
 import { Container, MenuNavLayout } from "./style"
+import { Player } from '../Player'
 export const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql `
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -22,11 +23,12 @@ export const Layout = ({ children }) => {
       }
     }
   `)
-  return (
+  return ( 
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || "Title"} />
-      <Container>{children}</Container>
+    <Header siteTitle={ data.site.siteMetadata?.title || "Title" } /> 
+      <Container> { children } </Container> 
       <MenuNavLayout />
+      <Player />
     </>
   )
 }

@@ -10,6 +10,8 @@ import {
   Container,
   UserSection,
 } from "./style"
+import { AppContext } from "../../Context"
+import { setUser } from "../../Context/ContextReducer"
 
 const ToHome = ({ title }) => (
   <LinkStyle to="/">
@@ -33,20 +35,19 @@ const UserContainer = ({ name, image }) => (
   </UserSection>
 )
 export const Header = ({ siteTitle }) => {
-  const [state, setState] = React.useState({
-    name: "",
-    image: "",
-  })
-  React.useEffect(() => {
-    User.getUser().then(setState).catch(console.log)
-  }, [])
+  const [state, dispatch] = React.useContext(AppContext)
+  const { user } = state
+  
+  React.useEffect(() => !user && User.isTokenInStorage() && User.getUser()
+    .then(user => dispatch(setUser(user)))
+    .catch(console.error), [])
   return (
     <Head>
       <Container>
         <ToHome title={siteTitle} />
         <div style={{ display: "flex" }}>
           <MenuNavHeader />
-          {state.name && <UserContainer {...state} />}
+          {user && <UserContainer {...user} />}
         </div>
       </Container>
     </Head>

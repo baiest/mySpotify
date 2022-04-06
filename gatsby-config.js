@@ -55,11 +55,5 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-      resolve: "gatsby-plugin-express",
-      options: {
-        output: "config/gatsby-express.json",
-      },
-    },
   ],
 }

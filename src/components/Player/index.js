@@ -1,14 +1,20 @@
 import React from "react"
+import { AppContext } from "../../Context"
+import { closePlayer } from "../../Context/ContextReducer"
 import { Spotify } from "./style"
 
-export const Player = ({ idTrack, handleCloseTrack }) => {
-  if (!idTrack) return null
+export const Player = () => {
+  const [state, dispatch] = React.useContext(AppContext)
+  const { currentTrack } = state
+  
+  const handleCloseTrack = () => dispatch(closePlayer()) 
+  if (!currentTrack) return null
   return (
     <Spotify>
       <p>Cargando...</p>
       <iframe
-        title={idTrack}
-        src={`https://open.spotify.com/embed/track/${idTrack}?utm_source=generator`}
+        title={currentTrack}
+        src={`https://open.spotify.com/embed/track/${currentTrack}?utm_source=generator`}
         width="100%"
         height="80"
         frameBorder="0"
