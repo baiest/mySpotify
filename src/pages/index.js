@@ -4,7 +4,7 @@ import { Track } from "../providers/Track"
 import Seo from "../components/seo"
 const IndexPage = () => {
   const getData = React.useCallback(() => Track.getTracks(), [])
-  React.useEffect(() => console.log(process.env.GATSBY_REDIRECT_URI), [])
+  React.useEffect(() => console.log(process.env.REDIRECT_URI), [])
   return (
     <>
       <Seo title="Home" />

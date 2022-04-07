@@ -1,6 +1,7 @@
 import { axiosInstance } from "./api"
 import { Track } from "./Track"
 import axios from "axios"
+console.log("CLIENT_ID", process.env.CLIENT_ID)
 export class User {
   constructor({ display_name, images }) {
     this.name = display_name
