@@ -3,9 +3,9 @@ export default async function spotifyLoginHandler(req, res) {
   try {
     const code = req.body.code
     const spotifyApi = new SpotifyWebApi({
-      redirectUri: `${process.env.GATSBY_REDIRECT_URI}/login`,
-      clientId: process.env.GATSBY_CLIENT_ID,
-      clientSecret: process.env.GATSBY_CLIENT_SECRET,
+      redirectUri: `${process.env.REDIRECT_URI}/login`,
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
     })
     return spotifyApi
       .authorizationCodeGrant(code)

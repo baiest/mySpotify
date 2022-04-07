@@ -1,7 +1,7 @@
 import { axiosInstance } from "./api"
 import { Track } from "./Track"
 import axios from "axios"
-console.log("CLIENT_ID", process.env.GATSBY_CLIENT_ID)
+console.log("CLIENT_ID", process.env.CLIENT_ID)
 export class User {
   constructor({ display_name, images }) {
     this.name = display_name
@@ -15,12 +15,12 @@ export class User {
   static getAuth() {
     const data = new URLSearchParams()
     data.append("response_type", "code")
-    data.append("client_id", process.env.GATSBY_CLIENT_ID)
+    data.append("client_id", process.env.CLIENT_ID)
     data.append(
       "scope",
       "user-read-private user-read-email user-library-read user-library-modify"
     )
-    data.append("redirect_uri", `${process.env.GATSBY_REDIRECT_URI}/login`)
+    data.append("redirect_uri", `${process.env.REDIRECT_URI}/login`)
     return "https://accounts.spotify.com/authorize?" + data
   }
   static async setToken(code) {
@@ -36,7 +36,7 @@ export class User {
   }
   static async getUser() {
     try {
-      console.log(process.env.GATSBY_REDIRECT_URI)
+      console.log(process.env.REDIRECT_URI)
       const response = await axiosInstance.get("/me", {
         headers: {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
