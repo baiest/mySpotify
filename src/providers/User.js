@@ -35,6 +35,7 @@ export class User {
   }
   static async getUser() {
     try {
+      console.log(process.env.REDIRECT_URI)
       const response = await axiosInstance.get("/me", {
         headers: {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -59,7 +60,6 @@ export class User {
         }
       )
       const data = response.data.items
-      console.log(data)
       return data.map(
         ({ track, added_at }) =>
           new Track({

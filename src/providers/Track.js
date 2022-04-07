@@ -20,7 +20,6 @@ export class Track {
           },
         }
       )
-      console.log(response.data.tracks)
       return response.data.tracks.map(
         track => new Track({ ...track, images: track.album.images })
       )
