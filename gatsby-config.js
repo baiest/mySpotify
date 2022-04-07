@@ -11,6 +11,7 @@ module.exports = {
     siteUrl: "https://baiest.github.io/mySpotify",
   },
   plugins: [
+    "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-image",
     "gatsby-plugin-styled-components",
