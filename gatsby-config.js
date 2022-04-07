@@ -62,5 +62,11 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        allowList: ["CLIENT_ID", "CLIENT_SECRET", "REDIRECT_URI"],
+      },
+    },
   ],
 }
