@@ -16,6 +16,8 @@ export const ButtonLogin = styled.button`
   border-radius: 15px;
   padding: 10px 15px;
   color: #fff;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
   background: ${({ logged }) => (logged ? color.fontColor : "green")};
   & > svg {
     margin-right: 10px;

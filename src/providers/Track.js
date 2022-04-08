@@ -5,7 +5,7 @@ export class Track {
     this.id = id
     this.name = name
     this.images = images
-    this.artists = artists
+    this.artists = artists.map(artist => artist.name)
     this.totalTracks = totalTracks
     this.liked = !!added_at
   }
@@ -13,7 +13,7 @@ export class Track {
   static async getTracks() {
     try {
       const response = await axiosInstance.get(
-        `/recommendations?limit=10&market=ES&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA`,
+        `/recommendations?limit=20&market=ES&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA`,
         {
           headers: {
             Authorization: `Bearer ${GET_TOKEN()}`,
@@ -23,6 +23,7 @@ export class Track {
       const data = response.data.tracks.map(
         track => new Track({ ...track, images: track.album.images })
       )
+      console.log(data)
       return data
     } catch (error) {
       console.error(error)

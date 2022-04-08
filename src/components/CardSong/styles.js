@@ -56,12 +56,7 @@ export const Info = styled.div`
   margin-right: 10px;
   font-family; 'Montserrat', sans-serif;
   width: 80%;
-
-  &>small{
-    font-size: .6rem;
-    font-weight: 300;
-    color: ${color.fontColor};
-  }
+  
   @media screen and (min-width: 420px) { 
     position: absolute;
     padding: 10px;
@@ -95,7 +90,35 @@ export const TitleInfo = styled.span`
     margin: 0;
     font-size: 0.8rem;
     font-weight: 700;
-    animation: ${({ animation }) => animation && telepronterAnimation} 5s linear
+  }
+  @media screen and (min-width: 420px) { 
+    & > h3 {
+      animation: ${({ animation }) =>
+        animation && telepronterAnimation} 5s linear infinite;
+    }
+  `
+const lateralAnimation = keyframes`
+  30% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-70%);
+  }
+`
+
+export const ArtistInfo = styled.div`
+  position: relative;
+  width: 80%;
+  min-height: 25px;
+  overflow: hidden;
+  & > small {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 0.6rem;
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif;
+    color: ${color.fontColor};
+    animation: ${({ animation }) => animation && lateralAnimation} 5s linear
       infinite;
   }
 `

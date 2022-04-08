@@ -28,6 +28,7 @@ export const Spotify = styled.div`
   width: 75%;
   height: 80px;
   border-radius: 12px;
+  color: #fff;
   animation: ${slideUp} 0.4s ease-in-out;
   & > p {
     margin: 0;

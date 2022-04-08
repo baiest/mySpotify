@@ -20,7 +20,7 @@ export const Player = () => {
         frameBorder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       ></iframe>
-      <button
+      {/* <button
         style={{
           position: "absolute",
           background: "red",
@@ -34,7 +34,7 @@ export const Player = () => {
         onClick={handleCloseTrack}
       >
         X
-      </button>
+      </button> */}
     </Spotify>
   )
 }
