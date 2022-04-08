@@ -11,7 +11,7 @@ const { GlobalStyles } = require("./src/styles")
 const { ContextProvider } = require("./src/Context")
 const { initialState, contextReducer } = require("./src/Context/ContextReducer")
 
-export const wrapRootElement = ({ element }) => (
+export const wrapPageElement = ({ element }) => (
   <ContextProvider initialState={initialState} reducer={contextReducer}>
     <GlobalStyles />
     <Layout>{element}</Layout>
