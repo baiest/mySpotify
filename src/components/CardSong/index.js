@@ -6,12 +6,15 @@ import {
   Card,
   ImgContainer,
   Info,
+  ButtonPlayContainer,
+  ButtonPlay,
   TitleInfo,
   ArtistInfo,
   Button,
   Liked,
   UnLiked,
 } from "./styles"
+
 export const CardSong = ({
   id = null,
   image = "https://i.scdn.co/image/ab67616d0000b273942a0c9ac8f1def7c8805044",
@@ -31,9 +34,12 @@ export const CardSong = ({
   const isAnimateArtist = completeArtists().length > 20
   return (
     <Card>
-      <ImgContainer onClick={handleOnClick}>
+      <ImgContainer>
         <img src={image} alt={`${completeArtists}-${title}`} />
       </ImgContainer>
+      <ButtonPlayContainer onClick={handleOnClick}>
+        <ButtonPlay size={30} />
+      </ButtonPlayContainer>
       <Info onClick={handleOnClick}>
         <TitleInfo animation={isAnimateTitle}>
           <h3>{title}</h3>

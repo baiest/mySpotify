@@ -1,12 +1,13 @@
 import styled, { keyframes } from "styled-components"
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md"
+import { FaPlay } from "react-icons/fa"
 import { color } from "../../styles/colors"
 
 const Opaity = keyframes`
   0% { opacity: 0; }
   100% { opacity: 1; }
 `
-export const Card = styled.article`
+export const Card = styled.div`
   position: relative;
   display: flex;
   align-items: center;
@@ -20,6 +21,9 @@ export const Card = styled.article`
   overflow: hidden;
   cursor: pointer;
   animation: ${Opaity} 0.3s ease-in;
+  :hover div {
+    opacity: 1;
+  }
 
   @media screen and (min-width: 420px) {
     display: inline-block;
@@ -50,6 +54,24 @@ export const ImgContainer = styled.figure`
       height: auto;
     }
   }
+`
+
+export const ButtonPlayContainer = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+`
+
+export const ButtonPlay = styled(FaPlay)`
+  margin-top: 25%;
+  color: rgba(255, 255, 255, 0.7);
 `
 
 export const Info = styled.div`

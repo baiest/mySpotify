@@ -11,7 +11,13 @@ export const Player = () => {
   if (!currentTrack) return null
   return (
     <Spotify>
-      <p>Cargando...</p>
+      <p
+        style={{
+          fontFamily: "Montserrat, sans-serif",
+        }}
+      >
+        Cargando...
+      </p>
       <iframe
         title={currentTrack}
         src={`https://open.spotify.com/embed/track/${currentTrack}?utm_source=generator`}
