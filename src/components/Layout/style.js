@@ -7,6 +7,10 @@ export const Container = styled.main`
   min-width: 320px;
   margin: 0 auto;
   padding: 10px 10px 80px 10px;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  positon: relative;
 `
 
 export const MenuNavLayout = styled(MenuNav)`

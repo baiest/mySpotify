@@ -52,7 +52,7 @@ export const Header = ({ siteTitle }) => {
       <Container>
         <ToHome title={siteTitle} />
         <div style={{ display: "flex" }}>
-          <MenuNavHeader />
+          <MenuNavHeader isUser={!!user} />
           {user && <UserContainer {...user} />}
         </div>
       </Container>

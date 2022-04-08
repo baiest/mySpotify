@@ -3,6 +3,8 @@ import { User } from "../../providers/User"
 import { navigate } from "gatsby"
 import { AppContext } from "../../Context"
 import { setTrack, setUser } from "../../Context/ContextReducer"
+import { FaSpotify } from "react-icons/fa"
+import { ButtonLogin } from "./style"
 
 export const LoginButton = ({ location }) => {
   const code = new URLSearchParams(location.search).get("code")
@@ -40,26 +42,10 @@ export const LoginButton = ({ location }) => {
   return (
     <>
       {error}
-      <button
-        style={{
-          background: "green",
-          // margin: '0 auto',
-          height: "45px",
-          width: "250px",
-          position: "absolute",
-          top: "50%",
-          bottom: "50%",
-          right: "calc(50% - 125px)",
-          textAlign: "center",
-          outline: "none",
-          border: "none",
-          borderRadius: "15px",
-          padding: "10px 15px",
-        }}
-        onClick={handleLog}
-      >
+      <ButtonLogin onClick={handleLog} logged={logged}>
+        <FaSpotify size={30} />
         {!logged ? "Login Spotify" : "Salir de Spotify"}
-      </button>
+      </ButtonLogin>
     </>
   )
 }

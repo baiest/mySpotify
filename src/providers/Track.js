@@ -1,5 +1,5 @@
 import { axiosInstance, GET_TOKEN } from "./api"
-
+import { DUMB_TRACKS } from "./dumpTracks"
 export class Track {
   constructor({ id, name, images, artists, totalTracks, added_at }) {
     this.id = id
@@ -20,11 +20,13 @@ export class Track {
           },
         }
       )
-      return response.data.tracks.map(
+      const data = response.data.tracks.map(
         track => new Track({ ...track, images: track.album.images })
       )
+      return data
     } catch (error) {
-      throw error
+      console.error(error)
+      return DUMB_TRACKS
     }
   }
 

@@ -5,7 +5,7 @@ import { MdFavorite, MdLogout } from "react-icons/md"
 
 const ICON_SIZE = 30
 
-export const MenuNav = ({ visible = true, className }) => {
+export const MenuNav = ({ visible = true, className, isUser = false }) => {
   if (!visible) return null
   return (
     <NavContainer className={className}>
@@ -17,7 +17,7 @@ export const MenuNav = ({ visible = true, className }) => {
         </MenuItem>
         <MenuItem>
           <Link to="/login">
-            <MdLogout size={ICON_SIZE} /> Salir
+            <MdLogout size={ICON_SIZE} /> {isUser ? "LogOut" : "LogIn"}
           </Link>
         </MenuItem>
       </MenuList>

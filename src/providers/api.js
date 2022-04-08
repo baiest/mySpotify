@@ -9,6 +9,9 @@ export const axiosInstance = axios.create({
   },
 })
 
-export const GET_TOKEN = () => window.localStorage.getItem("token")
-export const SET_TOKEN = token => window.localStorage.setItem("token", token)
-export const REMOVE_TOKEN = token => window.localStorage.removeItem("token")
+const NAME_STORAGE = "token"
+
+export const GET_TOKEN = () => window.localStorage.getItem(NAME_STORAGE)
+export const SET_TOKEN = token =>
+  window.localStorage.setItem(NAME_STORAGE, token)
+export const REMOVE_TOKEN = () => window.localStorage.removeItem(NAME_STORAGE)
