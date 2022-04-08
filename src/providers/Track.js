@@ -1,4 +1,4 @@
-import { axiosInstance } from "./api"
+import { axiosInstance, GET_TOKEN } from "./api"
 
 export class Track {
   constructor({ id, name, images, artists, totalTracks, added_at }) {
@@ -16,7 +16,7 @@ export class Track {
         `/recommendations?limit=10&market=ES&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA`,
         {
           headers: {
-            Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+            Authorization: `Bearer ${GET_TOKEN()}`,
           },
         }
       )
@@ -33,7 +33,7 @@ export class Track {
       const options = {
         url: `/me/tracks?ids=${id}`,
         headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+          Authorization: `Bearer ${GET_TOKEN()}`,
         },
       }
       if (liked) {

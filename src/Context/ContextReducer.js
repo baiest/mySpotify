@@ -13,6 +13,7 @@ const reducerOptions = (state, payload) => ({
 
 export const contextReducer = (state, action) => {
   try {
+    console.log(action)
     const options = reducerOptions(state, action.payload)
     return options[action.type]
   } catch (error) {

@@ -8,3 +8,7 @@ export const axiosInstance = axios.create({
     "Content-type": "application/json",
   },
 })
+
+export const GET_TOKEN = () => window.localStorage.getItem("token")
+export const SET_TOKEN = token => window.localStorage.setItem("token", token)
+export const REMOVE_TOKEN = token => window.localStorage.removeItem("token")

@@ -1,7 +1,6 @@
-import { axiosInstance } from "./api"
+import { axiosInstance, GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from "./api"
 import { Track } from "./Track"
 import axios from "axios"
-console.log("CLIENT_ID", process.env.GATSBY_CLIENT_ID)
 export class User {
   constructor({ display_name, images }) {
     this.name = display_name
@@ -9,7 +8,7 @@ export class User {
   }
   static isTokenInStorage() {
     const isBrowser = typeof window !== "undefined"
-    return isBrowser && window.localStorage.getItem("token")
+    return isBrowser && GET_TOKEN()
   }
   /**@returns URL to login in Spotify */
   static getAuth() {
@@ -23,13 +22,15 @@ export class User {
     data.append("redirect_uri", `${process.env.GATSBY_REDIRECT_URI}/login`)
     return "https://accounts.spotify.com/authorize?" + data
   }
+  /**Save the token provided by Sppotify in the LocalStorage
+   * @requires code Logued with Spotify
+   */
   static async setToken(code) {
     try {
       const response = await axios.post("/api/spotify-login", {
         code,
       })
-      window.localStorage.setItem("token", response.data.access_token)
-      return response.data.access_token
+      SET_TOKEN(response.data.access_token)
     } catch (error) {
       throw error
     }
@@ -39,7 +40,7 @@ export class User {
       console.log(process.env.GATSBY_REDIRECT_URI)
       const response = await axiosInstance.get("/me", {
         headers: {
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+          Authorization: `Bearer ${GET_TOKEN()}`,
         },
       })
       return new User({ ...response.data })
@@ -48,7 +49,7 @@ export class User {
     }
   }
   static logOut() {
-    window.localStorage.removeItem("token")
+    REMOVE_TOKEN()
   }
   static async getFavoritesSongs(numTracks, numPages) {
     try {
@@ -56,7 +57,7 @@ export class User {
         `me/tracks?market=ES&limit=${numTracks}&offset=${numPages}`,
         {
           headers: {
-            Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+            Authorization: `Bearer ${GET_TOKEN()}`,
           },
         }
       )

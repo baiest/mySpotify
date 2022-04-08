@@ -58,10 +58,8 @@ export const LoginButton = ({ location }) => {
         }}
         onClick={handleLog}
       >
-        {" "}
         {!logged ? "Login Spotify" : "Salir de Spotify"}
       </button>
     </>
   )
-  // return <p>Login</p>
 }
