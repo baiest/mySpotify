@@ -56,11 +56,7 @@ export const Info = styled.div`
   margin-right: 10px;
   font-family; 'Montserrat', sans-serif;
   width: 80%;
-  &>h3{
-    margin: 0;
-    font-size: .8rem;
-    font-weight: 700;
-  }
+
   &>small{
     font-size: .6rem;
     font-weight: 300;
@@ -78,9 +74,29 @@ export const Info = styled.div`
     flex-direction: column;
     justify-content: space-between;
     background: linear-gradient(0, ${color.primaryColor} 70%, transparent 100%);
-    &>h3{
-      width: 80%;
-    }
+  }
+`
+
+const telepronterAnimation = keyframes`
+  30% {
+    transform: translateY(0);
+  }
+  90%,
+  100% {
+    transform: translateY(-70%);
+  }
+`
+
+export const TitleInfo = styled.span`
+  width: 80%;
+  min-height: 40px;
+  overflow: hidden;
+  & > h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    animation: ${({ animation }) => animation && telepronterAnimation} 5s linear
+      infinite;
   }
 `
 
@@ -112,8 +128,10 @@ const LikeAnimation = like => keyframes`
   }
 `
 export const Liked = styled(MdFavorite)`
+  color: ${color.fontColor};
   animation: ${LikeAnimation(true)} 0.3s ease-in-out;
 `
 export const UnLiked = styled(MdFavoriteBorder)`
+  color: #fff;
   animation: ${LikeAnimation(false)} 0.3s ease-in-out;
 `

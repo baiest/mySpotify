@@ -11,6 +11,7 @@ export const Container = styled.main`
   display: flex;
   flex-direction: column;
   positon: relative;
+  color: #fff;
 `
 
 export const MenuNavLayout = styled(MenuNav)`
