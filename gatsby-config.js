@@ -14,7 +14,8 @@ module.exports = {
     title: "MySpotify",
     description: "Project to practice with Gatsby and React",
     author: "@baiest",
-    siteUrl: "https://baiest.github.io/mySpotify",
+    siteUrl: "https://myspotify.gatsbyjs.io",
+    image: "icon.png",
   },
   plugins: [
     "gatsby-plugin-gatsby-cloud",
