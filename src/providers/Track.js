@@ -23,7 +23,6 @@ export class Track {
       const data = response.data.tracks.map(
         track => new Track({ ...track, images: track.album.images })
       )
-      console.log(data)
       return data
     } catch (error) {
       console.error(error)

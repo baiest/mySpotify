@@ -1,3 +1,4 @@
+import { navigate } from "gatsby"
 import React from "react"
 import { AppContext } from "../../Context"
 import { setTrack } from "../../Context/ContextReducer"
@@ -26,7 +27,10 @@ export const CardSong = ({
   const [, dispatch] = React.useContext(AppContext)
   const handleFavorite = () => {
     setIsFavorite(!isFavorite)
-    Track.setLike(id, isFavorite)
+    Track.setLike(id, isFavorite).catch(error => {
+      console.error(error)
+      navigate("/login")
+    })
   }
   const handleOnClick = () => dispatch(setTrack(id))
   const isAnimateTitle = title.length > 40

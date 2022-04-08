@@ -37,7 +37,6 @@ export class User {
   }
   static async getUser() {
     try {
-      console.log(process.env.GATSBY_REDIRECT_URI)
       const response = await axiosInstance.get("/me", {
         headers: {
           Authorization: `Bearer ${GET_TOKEN()}`,
