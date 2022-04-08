@@ -32,7 +32,7 @@ export const Title = styled.h1`
 `
 
 export const MenuNavHeader = styled(MenuNav)`
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 650px) {
     display: none;
   }
 `

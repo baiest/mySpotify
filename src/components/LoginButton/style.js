@@ -11,6 +11,7 @@ export const ButtonLogin = styled.button`
   position: absolute;
   bottom: 50%;
   right: calc(50% - 125px);
+  font-family: "Montserrat", sans-serif;
   outline: none;
   border: none;
   border-radius: 15px;

@@ -35,14 +35,14 @@ export const MenuItem = styled.li`
     font-family: "Montserrat", sans-serif;
     
     ::selection {
-      color: none;
-      background: none;
+      background-color: none;
     }
   }
+  
   :hover {
     opacity: .8;
   }
-  @media screen and (min-width: 420px) { 
+  @media screen and (min-width: 650px) { 
     padding: 0 10px;
     :nth-child(n + 2){
       border-left: 1px solid #FFF;

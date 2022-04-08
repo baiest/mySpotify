@@ -75,7 +75,7 @@ export const ButtonPlayContainer = styled.div`
 
 export const ButtonPlay = styled(FaPlay)`
   margin-left: 25px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
   @media screen and (min-width: 420px) {
     margin-left: 0;
     margin-top: 25%;

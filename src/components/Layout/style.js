@@ -25,7 +25,7 @@ export const MenuNavLayout = styled(MenuNav)`
     justify-content: space-evenly;
     width: 100%;
   }
-  @media screen and (min-width: 420px) {
+  @media screen and (min-width: 650px) {
     display: none;
   }
 `
