@@ -33,5 +33,23 @@ export const MenuItem = styled.li`
     text-decoration: none;
     height: 100%;
     font-family: "Montserrat", sans-serif;
+    
+    ::selection {
+      color: none;
+      background: none;
+    }
   }
+  :hover {
+    opacity: .8;
+  }
+  @media screen and (min-width: 420px) { 
+    padding: 0 10px;
+    :nth-child(n + 2){
+      border-left: 1px solid #FFF;
+    }
+    & > a {
+      flex-direction: row;
+    }
+  }
+}
 `

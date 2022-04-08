@@ -59,19 +59,27 @@ export const ImgContainer = styled.figure`
 export const ButtonPlayContainer = styled.div`
   position: absolute;
   display: flex;
-  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   opacity: 0;
   transition: opacity 0.1s ease-in;
+  @media screen and (min-width: 420px) {
+    justify-content: center;
+    align-items: start;
+  }
 `
 
 export const ButtonPlay = styled(FaPlay)`
-  margin-top: 25%;
-  color: rgba(255, 255, 255, 0.7);
+  margin-left: 25px;
+  color: rgba(255, 255, 255, 0.5);
+  @media screen and (min-width: 420px) {
+    margin-left: 0;
+    margin-top: 25%;
+  }
 `
 
 export const Info = styled.div`
@@ -82,11 +90,11 @@ export const Info = styled.div`
   @media screen and (min-width: 420px) { 
     position: absolute;
     padding: 10px;
+    padding-top: 40px;
     width: 100%;
     height: 50%;
     left: 0;
     bottom: 0;
-    padding-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
