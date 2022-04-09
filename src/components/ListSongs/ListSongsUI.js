@@ -1,6 +1,7 @@
 import React from "react"
 
 import { CardSong } from "../CardSong"
+import { Loader } from "../Loader"
 import { Grid, Item } from "./styles"
 
 export const ListSongsUI = ({
@@ -44,7 +45,7 @@ export const ListSongsUI = ({
           />
         </Item>
       ))}
-      {loading && <p>Cargando...</p>}
+      {loading && <Loader />}
     </Grid>
   )
 }
