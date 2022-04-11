@@ -10,7 +10,7 @@ export const usePages = (getDataPages, search = null) => {
       return getDataPages(search, pages.songs, pages.page)
     }
     return getDataPages(pages.songs, pages.page)
-  }, [pages, search])
+  }, [pages, search, getDataPages])
   const handleIntersection = () => {
     setPages({ ...pages, page: pages.songs + pages.page })
   }

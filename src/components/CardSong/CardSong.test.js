@@ -22,7 +22,7 @@ describe("CardSong", () => {
   it("Elements CardSong", () => {
     expect(tree).toMatchSnapshot({
       children: [
-        { type: "figure" },
+        { type: "picture" },
         { type: "div" },
         { type: "div" },
         { type: "button" },
