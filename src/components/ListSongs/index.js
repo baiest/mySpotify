@@ -9,9 +9,9 @@ const initialState = {
 }
 
 const songsReducer = (state, action) => {
-  let newData = []
-  if (typeof action.payload === "object") {
-    newData = [...state.data, ...action.payload]
+  let newData = new Set([])
+  if (action.payload && typeof action.payload === "object") {
+    newData = new Set([...state.data, ...action.payload])
   }
   const reducer = {
     LOADING: { ...state, loading: true },
@@ -26,18 +26,39 @@ const songsReducer = (state, action) => {
   }
 }
 
-export const ListSongs = ({ getData, handleIntersection }) => {
+export const ListSongs = ({
+  getData,
+  handleIntersection,
+  isSearching = false,
+  setIsSearching = () => {},
+}) => {
   const [state, dispatch] = React.useReducer(songsReducer, initialState)
+
   React.useEffect(() => {
+    isSearching && dispatch({ type: "SET_DATA", payload: null })
     dispatch({ type: "LOADING" })
+    let isAbort = false
     getData()
       .then(data => {
-        dispatch({ type: "SET_DATA", payload: data })
-        data[0] && dispatch({ type: "SET_TOTAL", payload: data[0].totalTracks })
-        data.error && dispatch({ type: "ERROR", payload: data.error.message })
+        if (!isAbort) {
+          dispatch({ type: "SET_DATA", payload: new Set(data) })
+          data[0] &&
+            dispatch({ type: "SET_TOTAL", payload: data[0].totalTracks })
+          data.error && dispatch({ type: "ERROR", payload: data.error.message })
+        }
       })
       .catch(error => dispatch({ type: "ERROR", payload: error.message }))
+    return () => {
+      isAbort = true
+      setIsSearching(false)
+    }
   }, [getData])
 
-  return <ListSongsUI {...state} handleIntersection={handleIntersection} />
+  return (
+    <ListSongsUI
+      {...state}
+      data={Array.from(state.data)}
+      handleIntersection={handleIntersection}
+    />
+  )
 }

@@ -39,7 +39,7 @@ export const CardSong = ({
   return (
     <Card>
       <ImgContainer>
-        <img src={image} alt={`${completeArtists}-${title}`} />
+        <img src={image} alt={`${completeArtists()}-${title}`} />
       </ImgContainer>
       <ButtonPlayContainer onClick={handleOnClick}>
         <ButtonPlay size={30} />

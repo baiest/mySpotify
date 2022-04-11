@@ -43,7 +43,36 @@ export class Track {
       } else {
         options.method = "PUT"
       }
-      const response = await axiosInstance(options)
+      await axiosInstance(options)
+      this.query()
+    } catch (error) {
+      throw error
+    }
+  }
+
+  static async query(name, numTracks, numPages) {
+    try {
+      const url = new URLSearchParams()
+      url.append("q", name)
+      url.append("type", "track")
+      url.append("market", "ES")
+      url.append("limit", numTracks)
+      url.append("offset", numPages)
+      console.log("Se hizo petición")
+      const response = await axiosInstance(`/search?${url}`, {
+        headers: {
+          Authorization: `Bearer ${GET_TOKEN()}`,
+        },
+      })
+      const data = response.data.tracks
+      return data.items.map(
+        track =>
+          new Track({
+            ...track.album,
+            totalTracks: data.total,
+            id: track.id,
+          })
+      )
     } catch (error) {
       throw error
     }

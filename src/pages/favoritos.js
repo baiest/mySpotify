@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { ListSongs } from "../components/ListSongs"
 import Seo from "../components/seo"
 import { AppContext } from "../Context"
+import { usePages } from "../hooks/usePages"
 import { User } from "../providers/User"
 
 const Title = styled.h2`
@@ -11,17 +12,7 @@ const Title = styled.h2`
 `
 
 const Favoritos = () => {
-  const [pages, setPages] = React.useState({
-    songs: 15,
-    page: 0,
-  })
-  const getData = React.useCallback(
-    () => User.getFavoritesSongs(pages.songs, pages.page),
-    [pages]
-  )
-  const handleIntersection = () =>
-    setPages({ ...pages, page: pages.songs + pages.page })
-
+  const { getData, handleIntersection } = usePages(User.getFavoritesSongs)
   const [state] = React.useContext(AppContext)
   const { user } = state
   return (
