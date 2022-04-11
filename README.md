@@ -1,6 +1,6 @@
 # MySpotify
 
-Project created to work with spotify's api and Gatsby. To use api, spotify require that register the email's user, for this reason you can test the app in https://myspotify.gatsby.io using next credentials:
+Project created to work with spotify's api and Gatsby. To use the api, spotify require that register the email's user, for this reason you can test the app in https://myspotify.gatsby.io using next credentials:
 
 - email: myspotifyreact@gmail.com
 - password: myspotifyprueba
