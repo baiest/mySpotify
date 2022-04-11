@@ -66,7 +66,8 @@ export class User {
           new Track({
             ...track.album,
             id: track.id,
-            name: track.name,
+            nameTrack: track.name,
+            nameAlbum: track.album.name,
             totalTracks: response.data.total,
             added_at,
           })
