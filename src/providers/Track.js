@@ -1,9 +1,18 @@
 import { axiosInstance, GET_TOKEN } from "./api"
 import { DUMB_TRACKS } from "./dumpTracks"
 export class Track {
-  constructor({ id, name, images, artists, totalTracks, added_at }) {
+  constructor({
+    id,
+    nameAlbum,
+    nameTrack,
+    images,
+    artists,
+    totalTracks,
+    added_at,
+  }) {
     this.id = id
-    this.name = name
+    this.name =
+      nameTrack !== nameAlbum ? `${nameTrack} - ${nameAlbum}` : nameTrack
     this.images = images
     this.artists = artists.map(artist => artist.name)
     this.totalTracks = totalTracks
@@ -21,7 +30,14 @@ export class Track {
         }
       )
       const data = response.data.tracks.map(
-        track => new Track({ ...track, images: track.album.images })
+        track =>
+          new Track({
+            ...track,
+            id: track.id,
+            nameTrack: track.name,
+            nameAlbum: track.album.name,
+            images: track.album.images,
+          })
       )
       return data
     } catch (error) {
@@ -44,7 +60,6 @@ export class Track {
         options.method = "PUT"
       }
       await axiosInstance(options)
-      this.query()
     } catch (error) {
       throw error
     }
@@ -58,7 +73,7 @@ export class Track {
       url.append("market", "ES")
       url.append("limit", numTracks)
       url.append("offset", numPages)
-      console.log("Se hizo petición")
+
       const response = await axiosInstance(`/search?${url}`, {
         headers: {
           Authorization: `Bearer ${GET_TOKEN()}`,
@@ -69,6 +84,8 @@ export class Track {
         track =>
           new Track({
             ...track.album,
+            nameTrack: track.name,
+            nameAlbum: track.album.name,
             totalTracks: data.total,
             id: track.id,
           })

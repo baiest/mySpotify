@@ -38,11 +38,7 @@ export const ListSongsUI = ({
       {data.length === 0 && !loading && <p>No hay conciones</p>}
       {data.map(song => (
         <Item key={song.id} ref={cardRef}>
-          <CardSong
-            {...song}
-            title={song.name}
-            image={song.images && song.images[0].url}
-          />
+          <CardSong {...song} title={song.name} image={song.images} />
         </Item>
       ))}
       {loading && <Loader />}

@@ -33,13 +33,17 @@ export const CardSong = ({
     })
   }
   const handleOnClick = () => dispatch(setTrack(id))
-  const isAnimateTitle = title.length > 40
+  const isAnimateTitle = title.length > 25
   const completeArtists = React.useCallback(() => artists.join(", "), [artists])
   const isAnimateArtist = completeArtists().length > 20
   return (
     <Card>
       <ImgContainer>
-        <img src={image} alt={`${completeArtists()}-${title}`} />
+        <img
+          src={image[0].url}
+          loading="lazy"
+          alt={`${completeArtists()}-${title}`}
+        />
       </ImgContainer>
       <ButtonPlayContainer onClick={handleOnClick}>
         <ButtonPlay size={30} />

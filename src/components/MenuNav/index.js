@@ -8,10 +8,15 @@ const ICON_SIZE = 30
 
 const activeStyle = { color: color.fontColor }
 
-export const MenuNav = ({ visible = true, className, isUser = false }) => {
+export const MenuNav = ({
+  ref = null,
+  visible = true,
+  className,
+  isUser = false,
+}) => {
   if (!visible) return null
   return (
-    <NavContainer className={className}>
+    <NavContainer ref={ref} className={className}>
       <MenuList>
         <MenuItem>
           <Link to="/" activeStyle={activeStyle} unselectable="on">

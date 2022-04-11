@@ -33,7 +33,7 @@ export const Card = styled.div`
     box-shadow: 0 4px 8px ${color.shadow};
   }
 `
-export const ImgContainer = styled.figure`
+export const ImgContainer = styled.picture`
   position: absolute;
   left: 0;
   bottom: 0;

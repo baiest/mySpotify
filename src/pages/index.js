@@ -4,6 +4,7 @@ import { Track } from "../providers/Track"
 import Seo from "../components/seo"
 import { Searcher } from "../components/Searcher"
 import { usePages } from "../hooks/usePages"
+import { AppContext } from "../Context"
 const IndexPage = () => {
   const [search, setSearch] = React.useState("")
   const [isSearching, setIsSearching] = React.useState(false)
@@ -12,7 +13,8 @@ const IndexPage = () => {
     !!search ? Track.query : () => Promise.resolve([]),
     search
   )
-
+  const [state] = React.useContext(AppContext)
+  const { user } = state
   const handleSearch = query => {
     setIsSearching(true)
     setSearch(query)
@@ -24,7 +26,7 @@ const IndexPage = () => {
     <>
       <Seo title="Home" />
       <h2>Bienvenido a MySpotify</h2>
-      <Searcher handleSearch={handleSearch} />
+      {user && <Searcher handleSearch={handleSearch} />}
       {isFirstData && <ListSongs getData={getFirstData} />}
       {!isFirstData && (
         <ListSongs

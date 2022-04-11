@@ -15,6 +15,9 @@ export const Head = styled.header`
   background: ${color.primaryColor};
   color: #fff;
   padding: 8px;
+  position: sticky;
+  transition: top 0.4s;
+  z-index: 1; //Mala practica
 `
 
 export const LinkStyle = styled(Link)`

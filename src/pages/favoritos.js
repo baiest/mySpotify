@@ -12,7 +12,7 @@ const Title = styled.h2`
 `
 
 const Favoritos = () => {
-  const { getData, handleIntersection } = usePages(User.getFavoritesSongs)
+  const { getData, handleIntersection } = usePages(User.getFavoritesSongs, null)
   const [state] = React.useContext(AppContext)
   const { user } = state
   return (

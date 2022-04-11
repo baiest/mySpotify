@@ -12,7 +12,6 @@ export const usePages = (getDataPages, search = null) => {
     return getDataPages(pages.songs, pages.page)
   }, [pages, search])
   const handleIntersection = () => {
-    console.log("Intesect")
     setPages({ ...pages, page: pages.songs + pages.page })
   }
 

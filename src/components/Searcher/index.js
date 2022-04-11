@@ -1,15 +1,17 @@
 import React from "react"
-import { Input } from "./style"
-
+import { Input, SectionSearch, Icon } from "./style"
 export const Searcher = ({ handleSearch }) => {
   const inputRef = React.useRef()
 
   return (
-    <Input
-      ref={inputRef}
-      onChange={() => handleSearch(inputRef.current.value)}
-      type="text"
-      placeholder="Busca una canción..."
-    />
+    <SectionSearch>
+      <Input
+        ref={inputRef}
+        onChange={() => handleSearch(inputRef.current.value)}
+        type="text"
+        placeholder="Buscar una canción..."
+      />
+      <Icon size={30} />
+    </SectionSearch>
   )
 }

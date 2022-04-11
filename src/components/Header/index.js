@@ -37,18 +37,25 @@ const UserContainer = ({ name, image }) => (
 export const Header = ({ siteTitle }) => {
   const [state, dispatch] = React.useContext(AppContext)
   const { user } = state
-
-  React.useEffect(
-    () =>
-      !user &&
+  const menuRef = React.useRef(null)
+  React.useEffect(() => {
+    let prevScroll = window.scrollY
+    window.onscroll = () => {
+      if (prevScroll > window.scrollY) {
+        menuRef.current.style.top = "0"
+      } else {
+        menuRef.current.style.top = "-150px"
+      }
+      prevScroll = window.scrollY
+    }
+    !user &&
       User.isTokenInStorage() &&
       User.getUser()
         .then(user => dispatch(setUser(user)))
-        .catch(console.error),
-    [user, dispatch]
-  )
+        .catch(console.error)
+  }, [user, dispatch])
   return (
-    <Head>
+    <Head ref={menuRef}>
       <Container>
         <ToHome title={siteTitle} />
         <div style={{ display: "flex" }}>
