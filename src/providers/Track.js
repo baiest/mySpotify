@@ -44,7 +44,6 @@ export class Track {
         options.method = "PUT"
       }
       const response = await axiosInstance(options)
-      console.log(response)
     } catch (error) {
       throw error
     }

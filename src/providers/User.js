@@ -4,7 +4,7 @@ import axios from "axios"
 export class User {
   constructor({ display_name, images }) {
     this.name = display_name
-    this.image = images[0].url
+    this.image = images ? images.shift().url : null
   }
   static isTokenInStorage() {
     const isBrowser = typeof window !== "undefined"

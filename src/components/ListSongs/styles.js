@@ -8,6 +8,8 @@ export const Grid = styled.ul`
   margin: 25px 0;
   padding: 0;
   list-style: none;
+  text-align: center;
+  font-family: Montserrat, sans-serif;
   transition: all 0.3s;
 
   @media screen and (min-width: 420px) {
