@@ -7,7 +7,6 @@
   "dependencies": {
     "babel-plugin-styled-components": "^2.0.6",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3",
     "gatsby": "^4.11.1",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-env-variables": "^2.2.0",
