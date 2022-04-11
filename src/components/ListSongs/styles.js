@@ -8,10 +8,11 @@ export const Grid = styled.ul`
   margin: 25px 0;
   padding: 0;
   list-style: none;
-  text-align: center;
-  font-family: Montserrat, sans-serif;
   transition: all 0.3s;
-
+  & > p {
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+  }
   @media screen and (min-width: 420px) {
     grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
     gap: 20px;
